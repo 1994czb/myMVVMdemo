@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.example.mvvmde.UserEntity" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv"
+            userface="@{user.userface}"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"></ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.username??user.nickname}" />
+        <!--两个??表示如果username属性为null则显示nickname属性，
+        否则显示username属性。-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.nickname+user.age}" />
+        <!--字符串拼接-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@{user.age > 30 ? 0xFF0000FF:0xFFFF0000}"
+            android:text="@{String.valueOf(user.age)}" />
+        <!--根据数据来决定显示样式-->
+        <!--做了一个简单的判断，如果用户的年龄小于30，背景就显示为蓝色，否则背景就显示为红色-->
+
+
+            <ListView
+                android:id="@+id/lv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></ListView>
+
+    </LinearLayout>
+
+</layout>
